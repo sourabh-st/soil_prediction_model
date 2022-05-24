@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Crop Harvesting Prediction Model</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="Nitrogen" placeholder="Nitrogen (0 - 140)" required="required" />
+        <input type="text" name="Phosphorus" placeholder="Phosphorus (5 - 145)" required="required" />
+		<input type="text" name="Pottasium" placeholder="Pottasium (5 - 205)" required="required" />
+    <input type="text" name="temperature" placeholder="temperature (8 - 43)" required="required" />
+        <input type="text" name="humidity" placeholder="humidity (14 - 99)" required="required" />
+    <input type="text" name="ph" placeholder="ph (3 - 9)" required="required" />
+    <input type="text" name="rainfall" placeholder="rainfall (20 - 298)" required="required" />
+        <input type="text" name="soil_moisture" placeholder="soil moisture (15 - 90)" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
